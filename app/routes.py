@@ -162,3 +162,9 @@ def unfollow(username):
         return redirect(url_for('user', username=username))
     else:
         return redirect(url_for('index'))
+
+
+@app.route('/profilepage')
+@login_required
+def profilepage():
+    return render_template('profilepage.html')
