@@ -40,6 +40,6 @@ class EmptyForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class PostForm(FlaskForm):
-    post = TextAreaField('Say something', validators=[
+    post = TextAreaField('Post a review', validators=[
         DataRequired(), Length(min=1, max=140)])
     submit = SubmitField('Submit')
