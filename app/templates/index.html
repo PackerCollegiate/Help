@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <body style="background-color:#FCFF2C;">
     <h1>Hi, {{ current_user.username }}!</h1>
     {% if form %}
     <form action="" method="post">
@@ -14,6 +15,7 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
+  </body>
     {% endif %}
     {% for post in posts %}
         {% include '_post.html' %}
