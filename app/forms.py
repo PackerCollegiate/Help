@@ -40,6 +40,9 @@ class EmptyForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class PostForm(FlaskForm):
-    post = TextAreaField('Say something', validators=[
+    post = TextAreaField('Post a review:', validators=[
         DataRequired(), Length(min=1, max=140)])
+
+    movieRating = RadioField('Rating', choices=[(1,'1 Star'),(2,'2 Stars'),(3,'3 Stars'),(4,'4 Stars'),(5,'5 Stars')], validators=[DataRequired()])
+
     submit = SubmitField('Submit')
