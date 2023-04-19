@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
 from app.models import User
-from wtforms import StringField, TextAreaField, SubmitField
+from wtforms import StringField, TextAreaField, SubmitField, RadioField
 from wtforms.validators import DataRequired, Length
 
 
@@ -43,6 +43,6 @@ class PostForm(FlaskForm):
     post = TextAreaField('Post a review:', validators=[
         DataRequired(), Length(min=1, max=140)])
 
-    movieRating = RadioField('Rating', choices=[(1,'1 Star'),(2,'2 Stars'),(3,'3 Stars'),(4,'4 Stars'),(5,'5 Stars')], validators=[DataRequired()])
+    rating = RadioField('Rating')
 
     submit = SubmitField('Submit')

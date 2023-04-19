@@ -20,8 +20,9 @@ def before_request():
 @login_required
 def index():
     form = PostForm()
+    form.rating.choices=[(1,'1 Star'),(2,'2 Stars'),(3,'3 Stars'),(4,'4 Stars'),(5,'5 Stars')]
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
+        post = Post(body=form.post.data, author=current_user, rate=rating)
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')
