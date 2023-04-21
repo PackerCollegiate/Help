@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from config import Config
 from flask_bootstrap import Bootstrap
 
+
 app = Flask(__name__)
 
 app = Flask(__name__)
