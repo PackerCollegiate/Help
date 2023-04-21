@@ -168,3 +168,7 @@ def unfollow(username):
 @login_required
 def profilepage():
     return render_template('profilepage.html')
+
+@app.route('/miguel')
+def miguel():
+    return render_template('miguel.html', title ='Miguel')
