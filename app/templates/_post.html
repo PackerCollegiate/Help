@@ -3,10 +3,11 @@
             <td><img src="{{ post.author.avatar(36) }}"></td>
             <td>
                 <a href="{{ url_for('user', username=post.author.username) }}">
-                    <p style="font-family: Impact; color: #FA69FF" >{{ post.author.username }} </p>
+                    <p style="font-family: Helvetica; color: grey" >&nbsp{{ post.author.username }} says:</p>
                 </a>
-              <body style="background-color:pink;">
-              <p style="color: #00FF04">  says:</p><br><p style="font-family: Brush Script MT; font-size: 40px"> {{ post.body }} </p>
+              <body style="background-color:#ede6ca;">
+              <p style="font-family: Helvetica; font-size: 25px"> {{ post.body }} </p>
+              <br>
               </body>
             </td>
         </tr>

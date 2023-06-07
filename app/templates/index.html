@@ -1,12 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <meta charset="UTF-8">
-  <span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span><span style="font-size:500%;color:brown;">&starf;</span>
-  <body style="background-color:#FCFF2C;">
-
     <h1>Hi, {{ current_user.username }}!</h1>
-    <span style="font-size:300px">&#128525;&#128525;&#128525;&#128151;</span>
     {% if form %}
     <form action="" method="post">
         {{ form.hidden_tag() }}
@@ -18,7 +13,7 @@
             {% endfor %}
         </p>
         <p>{{ form.rating() }}</p>
-        <div
+        <div>
         <p>{{ form.submit() }}</p>
     </form>
     <h1 class="title">Feed</h1>
