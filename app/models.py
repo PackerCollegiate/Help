@@ -73,4 +73,7 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+<<<<<<< HEAD
  
+=======
+>>>>>>> parent of bd108a7 (look change 2.0)
