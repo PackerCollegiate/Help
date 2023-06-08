@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, \
     EmptyForm, PostForm
-from app.models import User, Post, Review
+from app.models import User, Post
 
 
 @app.before_request
@@ -25,11 +25,8 @@ class Review:
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user, rate=rating)
+        post = Post(body=form.post.data, author=current_user, rating=form.rating.data   )
         db.session.add(post)
-        db.session.commit()
-        review = Review(title=form.title.data, content=form.content.data, rating=form.rating.data)
-        db.session.add(review)
         db.session.commit()
         flash('Your review is now live!')
         return redirect(url_for('index'))

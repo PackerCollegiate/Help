@@ -43,10 +43,5 @@ class PostForm(FlaskForm):
     post = TextAreaField('Post a review:', validators=[
         DataRequired(), Length(min=1, max=140)])
 
+    rating = IntegerField('rating', validators=[validators.InputRequired()])
     submit = SubmitField('Submit')
-
-
-class ReviewForm(FlaskForm):
-    # Existing fields...
-    rating = IntegerField('Rating', validators=[validators.InputRequired()])
-
