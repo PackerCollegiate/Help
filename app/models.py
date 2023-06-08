@@ -73,7 +73,11 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+<<<<<<< HEAD
 
 # class restaurant(db.Model):
 #     location = db.Column()
 
+
+=======
+>>>>>>> parent of bd108a7 (look change 2.0)

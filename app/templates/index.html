@@ -17,6 +17,19 @@
         <p>{{ form.submit() }}</p>
     </form>
     <h1 class="title">Feed</h1>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.rating-icon').click(function() {
+        var ratingValue = $(this).data('value');
+        $('#hidden-rating-input').val(ratingValue);
+        $('.rating-icon').removeClass('selected');
+        $(this).addClass('selected');
+        $(this).prevAll('.rating-icon').addClass('selected');
+    });
+});
+</script>
+
   </body>
     {% endif %}
     {% for post in posts %}
