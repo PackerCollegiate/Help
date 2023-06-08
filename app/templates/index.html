@@ -1,33 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, {{ current_user.username }}!</h1>
-    {% if form %}
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.post.label }}<br>
-            {{ form.post(cols=32, rows=4) }}<br>
-            {% for error in form.post.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.rating() }}</p>
-        <div>
-        <p>{{ form.submit() }}</p>
-    </form>
-    <h1 class="title">Feed</h1>
+    <div class = "container">
+        <div class="row">
+            <div class="col-lg-7">
+                <center>
+                    <h1 class="title">Feed</h1>
+                </center>
+                {% for post in posts %}
+                    {% include '_post.html' %}
+                {% endfor %}
+                {% if prev_url %}
+                <a href="{{ prev_url }}">Newer posts</a>
+                {% endif %}
+                {% if next_url %}
+                <a href="{{ next_url }}">Older posts</a>
+                {% endif %}
 
-
-  </body>
-    {% endif %}
-    {% for post in posts %}
-        {% include '_post.html' %}
-    {% endfor %}
-    {% if prev_url %}
-    <a href="{{ prev_url }}">Newer posts</a>
-    {% endif %}
-    {% if next_url %}
-    <a href="{{ next_url }}">Older posts</a>
-    {% endif %}
+            </div>
+            <div class="col-lg-5">
+                <center>
+                    <h1>Hi, {{ current_user.username }}!</h1>
+                    {% if form %}
+                    <form action="" method="post">
+                        {{ form.hidden_tag() }}
+                        <p>
+                            {{ form.post.label }}<br>
+                            {{ form.post(cols=32, rows=4) }}<br>
+                            {% for error in form.post.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>{{ form.rating() }}</p>
+                        <div>
+                        <p>{{ form.submit() }}</p>
+                    </form>
+                    {% endif %}
+                </center>
+            </div>
+        </div>
+    </div>
 {% endblock %}
