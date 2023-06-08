@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, \
     EmptyForm, PostForm
-from app.models import User, Post
+from app.models import User, Post, Review
 
 
 @app.before_request
@@ -15,25 +15,34 @@ def before_request():
         db.session.commit()
 
 
+class Review:
+    pass
+
+
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
     form = PostForm()
-    form.rating.choices=[(1,'1 Star'),(2,'2 Stars'),(3,'3 Stars'),(4,'4 Stars'),(5,'5 Stars')]
     if form.validate_on_submit():
         post = Post(body=form.post.data, author=current_user, rate=rating)
         db.session.add(post)
+        db.session.commit()
+        review = Review(title=form.title.data, content=form.content.data, rating=form.rating.data)
+        db.session.add(review)
         db.session.commit()
         flash('Your review is now live!')
         return redirect(url_for('index'))
     page = request.args.get('page', 1, type=int)
     posts = current_user.followed_posts().paginate(
         page=page, per_page=app.config['POSTS_PER_PAGE'], error_out=False)
-    next_url = url_for('index', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('index', page=posts.prev_num) \
-        if posts.has_prev else None
+    next_url = None \
+        if not posts.has_next else url_for('index', page=posts.next_num)
+    assert isinstance(posts.has_prev, object)
+    if posts.has_prev:
+        prev_url = url_for('index', page=posts.prev_num)
+    else:
+        prev_url = None
     return render_template('index.html', title='Home', form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)

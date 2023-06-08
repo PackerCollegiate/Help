@@ -73,3 +73,8 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+class Review(db.Model):
+    # Existing fields...
+    rating = db.Column(db.Integer)
+
