@@ -41,7 +41,7 @@ class EmptyForm(FlaskForm):
 
 class PostForm(FlaskForm):
     post = TextAreaField('Post a review:', validators=[
-        DataRequired(), Length(min=1, max=140)])
+        DataRequired(), Length(min=1, max=5000)])
 
     rating = IntegerField('rating', validators=[DataRequired(), NumberRange(min=0, max=5)])
 
